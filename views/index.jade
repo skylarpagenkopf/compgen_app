@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	ol.breadcrumb
+		li.active Home
+	h3 Groups
+	ul
+		- each group in groups
+			li 
+				a(href='/#{group}/all') #{group}

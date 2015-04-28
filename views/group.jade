@@ -1,0 +1,51 @@
+extends layout
+
+block content
+	ol.breadcrumb
+		li
+			a(href='../../') Home
+		li.active #{title}
+	h3 #{title}
+	.row
+		.col-md-6(data-spy='affix' data-offset-top='0')
+			img.image(src="../../images/#{title}1.png")
+		.col-md-6.col-offset-md-6
+		.col-md-6
+			.section
+				h4 Lookup
+				form.form-inline(action='', method='get', role='form')
+					.form-group
+						input.form-control(type='text', name='pop', id='pop')
+					button.btn.btn-primary.submit(type='submit') Submit
+			.section
+				h4 Migrations
+				table.table.table-striped
+					tr 
+						th Closest Ancestor
+						th Descendant
+						th Amount
+					for mig in migdata
+						tr
+							td #{mig.pop1}
+							td #{mig.pop2}
+							td #{mig.amount}
+			.section
+				h4 Drift
+				table.table.table-striped
+					tr 
+						th Population 1
+						th Population 2
+						th Amount
+					for drift in driftdata
+						tr
+							td #{drift.pop1}
+							td #{drift.pop2}
+							td #{drift.amount}
+	
+	script.
+		$(document).on('ready', function() {
+			$('form').on('submit', function(e) {
+				e.preventDefault();
+				$(location).attr('href', '/' + $('.title').html() + '/' + $('#pop').val());
+			});
+		});
