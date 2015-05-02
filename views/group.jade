@@ -5,17 +5,17 @@ block content
 		li
 			a(href='../../') Home
 		li.active #{title}
-	h3 #{title}
+	h3.title #{title}
 	.row
-		.col-md-6(data-spy='affix' data-offset-top='0')
+		.col-md-6
+		.col-md-6.graph(data-spy='affix' data-offset-top='0')
 			img.image(src="../../images/#{title}1.png")
-		.col-md-6.col-offset-md-6
 		.col-md-6
 			.section
 				h4 Lookup
 				form.form-inline(action='', method='get', role='form')
 					.form-group
-						input.form-control(type='text', name='pop', id='pop')
+						input.form-control(type='text', name='pop', id='pop', value='#{searched}')
 					button.btn.btn-primary.submit(type='submit') Submit
 			.section
 				h4 Migrations

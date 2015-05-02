@@ -1,11 +1,13 @@
 body {
   padding: 20px 50px 20px 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+@media (max-width: 1000px) {
+    .affix {
+        position: relative;
+    }
 }
+
 .title {
 	padding-bottom: 20px;
 }
@@ -28,4 +30,8 @@ a {
 
 .form-group {
 	width: 50%;
+}
+
+.graph {
+	padding-bottom: 100px;
 }

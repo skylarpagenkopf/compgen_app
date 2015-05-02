@@ -29,7 +29,8 @@ router.get('/', function(req, res) {
 
 // show group info
 router.get('/:group/:search', function(req, res) {
-	var params = {group: req.params.group};
+	var params = {group: req.params.group},
+		searched = '';
 	if (req.params.search != 'all') {
 		params = {
 			$or: [
@@ -42,6 +43,7 @@ router.get('/:group/:search', function(req, res) {
 						pop2: req.params.search
 					}
 		]};
+		searched = req.params.search;
 	}
  	db.collection('rels').find(params).toArray(function(err, data) {
  		// separate drift and mig data
@@ -58,7 +60,8 @@ router.get('/:group/:search', function(req, res) {
 		res.render('group', {
 			title: req.params.group, 
 			driftdata: driftdata,
-			migdata: migdata
+			migdata: migdata,
+			searched: searched
 		});
 	});
 });
