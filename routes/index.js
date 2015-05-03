@@ -45,7 +45,7 @@ router.get('/:group/:search', function(req, res) {
 		]};
 		searched = req.params.search;
 	}
- 	db.collection('rels').find(params).toArray(function(err, data) {
+ 	db.collection('rels').find(params).sort({ group: 1 }).toArray(function(err, data) {
  		// separate drift and mig data
  		var driftdata = [],
  			migdata = [],
