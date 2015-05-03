@@ -15,7 +15,7 @@ mongo.MongoClient.connect('mongodb://skylar:skylar@ds031792.mongolab.com:31792/h
 
 // get home page and list groups
 router.get('/', function(req, res) {
-  db.collection('rels').find({},{group: 1, _id: 0 }).toArray(function(err, data) {
+  db.collection('rels').find({},{group: 1, _id: 0 }).sort({ group: 1 }).toArray(function(err, data) {
 	var groups = [],
 		i;
 	for (i = 0; i < data.length; i++) {
@@ -45,7 +45,7 @@ router.get('/:group/:search', function(req, res) {
 		]};
 		searched = req.params.search;
 	}
- 	db.collection('rels').find(params).sort({ group: 1 }).toArray(function(err, data) {
+ 	db.collection('rels').find(params).toArray(function(err, data) {
  		// separate drift and mig data
  		var driftdata = [],
  			migdata = [],
