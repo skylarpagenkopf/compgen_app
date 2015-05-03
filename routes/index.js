@@ -8,7 +8,7 @@ var ObjectID = mongo.ObjectID;
 var db;
 
 // connects to db
-mongo.MongoClient.connect(process.env.MONGOHQ_URL ||'mongodb://localhost:27017/cg', function(err, database) {
+mongo.MongoClient.connect('mongodb://skylar:skylar@ds031792.mongolab.com:31792/heroku_app36473367', function(err, database) {
 	if (err) throw err;
 	db = database;
 });
